@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>MaterialCV</title>
+  <title>Tineo</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Google Icon Font -->
@@ -23,7 +23,7 @@
   <!-- Responsive -->
   <link type="text/css" rel="stylesheet" href="assets/css/responsive.css" />
   <!-- Theme -->
-  <link type="text/css" rel="stylesheet" href="assets/themes/color9/color-style/color.css" id="switch_style" />
+  <link type="text/css" rel="stylesheet" href="assets/css/color.css" />
   <!-- Demo -->
   <link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
 </head>
@@ -35,32 +35,27 @@
       <!-- Header -->
       <header class="dark-bg">
         <ul class="social-links">
+
+
+          {{range $index, $element := .Social}}
           <li>
-            <a href="index.html#" class="tooltipped" data-position="bottom" data-delay="20" data-tooltip="Facebook"><i class="fa fa-facebook"></i></a>
+            <a href="{{ $element.Url }}" class="tooltipped" data-position="bottom" data-delay="20" data-tooltip="{{ $element.Caption }}"><i class="fa fa-{{ $element.Icon }}"></i></a>
           </li>
-          <li>
-            <a href="index.html#" class="tooltipped" data-position="bottom" data-delay="20" data-tooltip="Twitter"><i class="fa fa-twitter"></i></a>
-          </li>
-          <li>
-            <a href="index.html#" class="tooltipped" data-position="bottom" data-delay="20" data-tooltip="Google Plus"><i class="fa fa-google-plus"></i></a>
-          </li>
-          <li>
-            <a href="index.html#" class="tooltipped" data-position="bottom" data-delay="20" data-tooltip="Dribbble"><i class="fa fa-dribbble"></i></a>
-          </li>
-          <li>
-            <a href="index.html#" class="tooltipped" data-position="bottom" data-delay="20" data-tooltip="Linkedin"><i class="fa fa-linkedin"></i></a>
-          </li>
+          {{ end }}
+
+
+
         </ul>
         <div class="user_name-title">
-          <h2>GÖKHAN KARA</h2>
-          <p>Professional Graphic Designer</p>
+          <h2>{{ .Personal.FirstName  }} {{ .Personal.LastName  }}</h2>
+          <p>Web Developer</p>
         </div>
       </header>
       <!-- # Header End # -->
       <!-- Personal Information -->
       <div class="user-wrapper">
         <!-- Profile Image -->
-        <div class="profile-image"> <img src="images/Profile_Image.png" alt="GÖKHAN KARA" class="responsive-img"> </div>
+        <div class="profile-image"> <img src="images/tineo.jpg" alt="{{ .Personal.FirstName  }} {{ .Personal.LastName  }}" class="responsive-img"> </div>
         <!-- # Profile Image End # -->
         <div class="user-content">
           <ul class="collection">
@@ -68,17 +63,18 @@
               <span class="bolder">Freelance Work Status</span>
               <div class="switch right">
                 <label>
-                  <input disabled type="checkbox" checked>
-                  <span class="lever"></span>ON</label>
+                  <input disabled type="checkbox" {{ if .Personal.Status  }} checked {{ end }} >
+                  <span class="lever"></span>{{ if .Personal.Status  }} ON {{ else }} OFF {{ end }}</label>
               </div>
             </li>
             <li class="collection-item">
-              <span class="bolder">Hello my name is Gökhan KARA!</span>
+              <span class="bolder">Hello my name is {{ .Personal.FirstName  }} {{ .Personal.LastName  }}!</span>
               <br>
-              <br> I'm a <i class="text-color">Web Designer</i> & <i class="text-color">Web Developer</i> from <i>Melbourne</i>, Australia. In pharetra orci dignissim, blandit mi semper, ultricies diam. Suspendisse malesuada suscipit nunc non volutpat. Sed porta nulla id orci laoreet tempor non consequat enim. Sed vitae aliquam velit. </li>
+              <br> I'm a <i class="text-color">Software Designer</i> & <i class="text-color">Web Developer</i> from <i>Lima</i>, Peru.
+              {{ .Personal.Abstract }} </li>
             <li class="collection-item">
-              <a href="CV/CV_Template.pdf.html" target="_blank" class="btn waves-effect waves-light dark-bg">DOWNLOAD CV<i class="material-icons">file_download</i></a>
-              <a href="index.html#contact" class="btn waves-effect waves-light light-bg">CONTACT ME!<i class="material-icons">email</i></a>
+              <a href="static/cv.pdf" target="_blank" class="btn waves-effect waves-light dark-bg">DOWNLOAD CV<i class="material-icons">file_download</i></a>
+              <a href="#contact" class="btn waves-effect waves-light light-bg">CONTACT ME!<i class="material-icons">email</i></a>
             </li>
           </ul>
         </div>
@@ -96,31 +92,26 @@
           <div class="nav-wrapper">
             <ul>
               <li>
-                <a href="index.html#page-top" class="waves-effect">Hello</a>
+                <a href="#page-top" class="waves-effect">Hello</a>
               </li>
               <li>
-                <a href="index.html#page-top" class="waves-effect">Education</a>
+                <a href="#page-top" class="waves-effect">Education</a>
               </li>
               <li>
-                <a href="index.html#works" class="waves-effect">Work Experience</a>
+                <a href="#works" class="waves-effect">Work Experience</a>
               </li>
               <li>
-                <a href="index.html#skills" class="waves-effect">Skills</a>
+                <a href="#skills" class="waves-effect">Skills</a>
               </li>
               <li>
-                <a href="index.html#services" class="waves-effect">Services</a>
+                <a href="#services" class="waves-effect">Services</a>
               </li>
               <li>
-                <a href="index.html#portfolio" class="waves-effect">Portfolio</a>
+                <a href="#portfolio" class="waves-effect">Portfolio</a>
               </li>
+
               <li>
-                <a href="index.html#price" class="waves-effect">Pricing</a>
-              </li>
-              <li>
-                <a href="index.html#references" class="waves-effect">References</a>
-              </li>
-              <li>
-                <a href="index.html#contact" class="waves-effect">Contact</a>
+                <a href="#contact" class="waves-effect">Contact</a>
               </li>
             </ul>
           </div>
@@ -132,31 +123,28 @@
         <a class="btn btn-floating btn-large light-bg"> <i class="large mdi-navigation-menu"></i> </a>
         <ul>
           <li>
-            <a class="btn-floating" href="index.html#page-top"><i class="material-icons">home</i></a>
+            <a class="btn-floating" href="#page-top"><i class="material-icons">home</i></a>
           </li>
           <li>
-            <a class="btn-floating white" href="index.html#education"><i class="material-icons cyan-text text-darken-2">account_balance</i></a>
+            <a class="btn-floating white" href="#education"><i class="material-icons cyan-text text-darken-2">account_balance</i></a>
           </li>
           <li>
-            <a class="btn-floating light-green darken-3" href="index.html#works"><i class="material-icons">work</i></a>
+            <a class="btn-floating light-green darken-3" href="#works"><i class="material-icons">work</i></a>
           </li>
           <li>
-            <a class="btn-floating deep-orange accent-3" href="index.html#skills"><i class="material-icons">assessment</i></a>
+            <a class="btn-floating deep-orange accent-3" href="#skills"><i class="material-icons">assessment</i></a>
           </li>
           <li>
-            <a class="btn-floating deep-purple darken-3" href="index.html#services"><i class="material-icons">important_devices</i></a>
+            <a class="btn-floating deep-purple darken-3" href="#services"><i class="material-icons">important_devices</i></a>
           </li>
           <li>
-            <a class="btn-floating light-green darken-3" href="index.html#portfolio"><i class="material-icons">queue_play_next</i></a>
+            <a class="btn-floating light-green darken-3" href="#portfolio"><i class="material-icons">queue_play_next</i></a>
           </li>
+
+
+
           <li>
-            <a class="btn-floating cyan darken-4" href="index.html#price"><i class="material-icons">format_list_bulleted</i></a>
-          </li>
-          <li>
-            <a class="btn-floating deep-orange accent-3" href="index.html#references"><i class="material-icons">assignment_ind</i></a>
-          </li>
-          <li>
-            <a class="btn-floating lime darken-2" href="index.html#contact"><i class="material-icons">mail_outline</i></a>
+            <a class="btn-floating lime darken-2" href="#contact"><i class="material-icons">mail_outline</i></a>
           </li>
         </ul>
       </div>
@@ -164,8 +152,8 @@
       <!-- Header Content -->
       <div class="light-bg header-wrap">
         <div class="header-content">
-          <h1>My name is <strong>Gökhan Kara</strong> |</h1>
-          <span class="sub-text">I love <strong>Design</strong>, <strong>Music</strong> and <strong>Skati!</strong></span>
+          <h1>My name is <strong>{{ .Personal.FirstName  }} {{ .Personal.LastName  }}</strong> |</h1>
+          <span class="sub-text">I love <strong>Cats</strong> and <strong>Books!</strong></span>
         </div>
       </div>
       <!-- # Header Content End # -->
@@ -189,36 +177,17 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="col1"><img src="images/Education/Education_Building_1.png" alt="Massachusetts Institute of Technology (MIT)" class="circle"></td>
-              <td class="col2">Massachusetts Institute of Technology (MIT)</td>
-              <td class="col3">English Exam British Sales Operation</td>
-              <td class="col4">2005 - 2006</td>
-            </tr>
-            <tr>
-              <td class="col1"><img src="images/Education/Education_Building_2.png" alt="University of Cambridge" class="circle"></td>
-              <td class="col2">University of Cambridge</td>
-              <td class="col3">Department of Economics</td>
-              <td class="col4">2007 - 2008</td>
-            </tr>
-            <tr>
-              <td class="col1"><img src="images/Education/Education_Building_3.png" alt="Imperial College London" class="circle"></td>
-              <td class="col2">Imperial College London</td>
-              <td class="col3">Economics Department</td>
-              <td class="col4">2009 - 2010</td>
-            </tr>
-            <tr>
-              <td class="col1"><img src="images/Education/Education_Building_4.png" alt="Harvard University" class="circle"></td>
-              <td class="col2">Harvard University</td>
-              <td class="col3">Paris School of Economics</td>
-              <td class="col4">2011 - 2012</td>
-            </tr>
-            <tr>
-              <td class="col1"><img src="images/Education/Education_Building_5.png" alt="UCL (University College London)" class="circle"></td>
-              <td class="col2">UCL (University College London)</td>
-              <td class="col3">Graphic Design Deparment</td>
-              <td class="col4">2013 - 2015</td>
-            </tr>
+
+
+          {{range $index, $element := .Education}}
+          <tr>
+              <td class="col1"><img src="images/Education/{{  $element.Logo }}" alt="{{ $element.College }}" class="circle"></td>
+              <td class="col2">{{ $element.College }}</td>
+              <td class="col3">{{ $element.Career }}</td>
+              <td class="col4">{{ $element.Lapse }}</td>
+          </tr>
+          {{ end }}
+
           </tbody>
         </table>
         <!-- #  Table End # -->
@@ -243,39 +212,18 @@
             </tr>
           </thead>
           <tbody>
+
+          {{range $index, $element := .Work}}
             <tr>
-              <td class="col1"><img src="images/Works/Company_Logo_1.png" alt="IT Group Social Media Company" class="circle"></td>
-              <td class="col2">IT Group Social Media Company</td>
-              <td class="col3">Graphic Designer /
-                <span class="light-green-text text-darken-3">Lead Web Designer</span>
+              <td class="col1"><img src="images/Works/{{  $element.Logo }}" alt="{{ $element.Company }}" class="circle"></td>
+              <td class="col2">{{ $element.Company }}</td>
+              <td class="col3"><span class="light-green-text text-darken-3">{{ $element.BussinessName }} </span> /
+                {{ $element.Department }}
               </td>
-              <td class="col4">2006 - 2007</td>
+              <td class="col4">{{  $element.Lapse }}</td>
             </tr>
-            <tr>
-              <td class="col1"><img src="images/Works/Company_Logo_2.png" alt="Guupzi" class="circle"></td>
-              <td class="col2">Guupzi</td>
-              <td class="col3">Seo / Back end Developers</td>
-              <td class="col4">2007 - 2008</td>
-            </tr>
-            <tr>
-              <td class="col1"><img src="images/Works/Company_Logo_3.png" alt="ReedLonely Company" class="circle"></td>
-              <td class="col2">ReedLonely Company</td>
-              <td class="col3">Accounting</td>
-              <td class="col4">2009 - 2011</td>
-            </tr>
-            <tr>
-              <td class="col1"><img src="images/Works/Company_Logo_4.png" alt="OutGo! PC Server System Company" class="circle"></td>
-              <td class="col2">OutGo! PC Server System Company</td>
-              <td class="col3">PC Sales / Operator</td>
-              <td class="col4">2011 - 2012</td>
-            </tr>
-            <tr>
-              <td class="col1"><img src="images/Works/Company_Logo_5.png" alt=" " class="circle"></td>
-              <td class="col2"></td>
-              <td class="col3">English Exam Sales Operation</td>
-              <td class="col4">2012 - 2015</td>
-            </tr>
-          </tbody>
+          {{ end }}
+
           <!-- # Table End # -->
         </table>
       </section>
@@ -290,16 +238,18 @@
         <!-- # Title End # -->
         <div class="skills">
           <!-- Skill Item -->
-          <div class="skill-item"> <img src="images/Skills/Skill_Logo_1.png" class="circle" alt="Adobe InDesign">
-            <div class="title_value">Adobe InDesign
-              <span class="value">%60</span>
+          {{range $index, $element := .Skills}}
+          <div class="skill-item"> <img src="images/Skills/{{  $element.Logo }}" class="circle" alt="{{ $element.SkillName }}">
+            <div class="title_value">{{ $element.SkillName }}
+              <span class="value">%{{ $element.Percent }}</span>
             </div>
             <div class="progress">
-              <div class="determinate pink darken-4" style="width: 60%;"></div>
+              <div class="determinate {{ $element.Color }} darken-4" style="width: {{ $element.Percent }}%;"></div>
             </div>
           </div>
+          {{ end }}
           <!-- # Skill Item End # -->
-          <!-- Skill Item -->
+          <!-- Skill Item
           <div class="skill-item"> <img src="images/Skills/Skill_Logo_2.png" class="circle" alt="Adobe Photoshop CS.6">
             <div class="title_value">Adobe Photoshop CS.6
               <span class="value">%60</span>
@@ -308,8 +258,7 @@
               <div class="determinate blue darken-3" style="width: 60%;"></div>
             </div>
           </div>
-          <!-- # Skill Item End # -->
-          <!-- Skill Item -->
+
           <div class="skill-item"> <img src="images/Skills/Skill_Logo_3.png" class="circle" alt="Adobe Illustrator">
             <div class="title_value">Adobe Illustrator
               <span class="value">%90</span>
@@ -318,8 +267,8 @@
               <div class="determinate amber darken-4" style="width: 90%;"></div>
             </div>
           </div>
-          <!-- # Skill Item End # -->
-          <!-- Skill Item -->
+
+
           <div class="skill-item"> <img src="images/Skills/Skill_Logo_4.png" class="circle" alt="Adobe Flash CS.8">
             <div class="title_value">Adobe Flash CS.8
               <span class="value">%45</span>
@@ -343,6 +292,30 @@
         <!-- # Title End # -->
         <div id="Services_Carousel" class="owl-carousel">
           <!-- Service Item -->
+          {{range $index, $element := .Services}}
+          <div class="item service-item">
+            <span class="icon"><i class="material-icons {{ $element.Color }} darken-3">{{ $element.Logo }}</i></span>
+            <h6>{{ $element.ServiceName }}</h6>
+            <span class="sep {{ $element.Color }} darken-3"></span>
+            <p>{{ $element.Description }}</p>
+          </div>
+          {{ end }}
+          <!-- # Service Item End # -->
+          <!-- Service Item
+          <div class="item service-item">
+            <span class="icon"><i class="material-icons pink darken-3">videogame_asset</i></span>
+            <h6>ios / Android Game Coding</h6>
+            <span class="sep pink darken-3"></span>
+            <p>Vestibulum ut pharetra diam, vitae hendrerit sapien. Praesent porttitor augue nec semper suscipi tdolor.</p>
+          </div>
+
+          <div class="item service-item">
+            <span class="icon"><i class="material-icons deep-orange accent-3">music_note</i></span>
+            <h6>Business Music Entertament</h6>
+            <span class="sep deep-orange accent-3"></span>
+            <p>Vestibulum ut pharetra diam, vitae hendrerit sapien. Praesent porttitor augue nec semper suscipi tdolor.</p>
+          </div>
+
           <div class="item service-item">
             <span class="icon"><i class="material-icons deep-purple darken-3">timeline</i></span>
             <h6>Seo Optimizasion</h6>
@@ -350,46 +323,7 @@
             <p>Vestibulum ut pharetra diam, vitae hendrerit sapien. Praesent porttitor augue nec semper suscipi tdolor.</p>
           </div>
           <!-- # Service Item End # -->
-          <!-- Service Item -->
-          <div class="item service-item">
-            <span class="icon"><i class="material-icons pink darken-3">videogame_asset</i></span>
-            <h6>ios / Android Game Coding</h6>
-            <span class="sep pink darken-3"></span>
-            <p>Vestibulum ut pharetra diam, vitae hendrerit sapien. Praesent porttitor augue nec semper suscipi tdolor.</p>
-          </div>
-          <!-- # Service Item End # -->
-          <!-- Service Item -->
-          <div class="item service-item">
-            <span class="icon"><i class="material-icons deep-orange accent-3">music_note</i></span>
-            <h6>Business Music Entertament</h6>
-            <span class="sep deep-orange accent-3"></span>
-            <p>Vestibulum ut pharetra diam, vitae hendrerit sapien. Praesent porttitor augue nec semper suscipi tdolor.</p>
-          </div>
-          <!-- # Service Item End # -->
-          <!-- Service Item -->
-          <div class="item service-item">
-            <span class="icon"><i class="material-icons deep-purple darken-3">timeline</i></span>
-            <h6>Seo Optimizasion</h6>
-            <span class="sep deep-purple darken-3"></span>
-            <p>Vestibulum ut pharetra diam, vitae hendrerit sapien. Praesent porttitor augue nec semper suscipi tdolor.</p>
-          </div>
-          <!-- # Service Item End # -->
-          <!-- Service Item -->
-          <div class="item service-item">
-            <span class="icon"><i class="material-icons pink darken-3">videogame_asset</i></span>
-            <h6>ios / Android Game Coding</h6>
-            <span class="sep pink darken-3"></span>
-            <p>Vestibulum ut pharetra diam, vitae hendrerit sapien. Praesent porttitor augue nec semper suscipi tdolor.</p>
-          </div>
-          <!-- # Service Item End # -->
-          <!-- Service Item -->
-          <div class="item service-item">
-            <span class="icon"><i class="material-icons deep-orange accent-3">music_note</i></span>
-            <h6>Business Music Entertament</h6>
-            <span class="sep deep-orange accent-3"></span>
-            <p>Vestibulum ut pharetra diam, vitae hendrerit sapien. Praesent porttitor augue nec semper suscipi tdolor.</p>
-          </div>
-          <!-- # Service Item End # -->
+
         </div>
       </section>
       <!-- # Services End # -->
@@ -403,19 +337,22 @@
         <!-- # Title End # -->
         <div id="Portfolio_Carousel" class="owl-carousel">
           <!-- Portfolio Item -->
+          {{range $index, $element := .Portfolio}}
           <div class="item portfolio-item">
-            <a href="index.html#Portfolio_Detail" class="modal-trigger">
-              <h6 class="portfolio-name">French Cooking</h6>
-              <img src="images/Portfolio/Portfolio_1.png" class="responsive-img" alt="French Cooking">
+            <a href="#Portfolio_Detail" class="modal-trigger">
+              <h6 class="portfolio-name">{{ $element.Title }}</h6>
+              <img src="images/Portfolio/{{ $element.ImageCaption }}" class="responsive-img" alt="{{ $element.Title }}">
               <span class="portfolio-categories">Category,
-                <span class="light-green-text text-darken-3">Digital Art</span>
+                <span class="light-green-text text-darken-3">{{ $element.Categories }}</span>
               </span>
             </a>
           </div>
+          {{ end }}
           <!-- # Portfolio Item End # -->
-          <!-- Portfolio Item -->
+
+          <!-- Portfolio Item
           <div class="item portfolio-item">
-            <a href="index.html#Portfolio_Detail" class="modal-trigger">
+            <a href="#Portfolio_Detail" class="modal-trigger">
               <h6 class="portfolio-name">Verso – Digital Magazine</h6>
               <img src="images/Portfolio/Portfolio_2.png" class="responsive-img" alt="Verso – Digital Magazine">
               <span class="portfolio-categories">Category,
@@ -423,10 +360,10 @@
               </span>
             </a>
           </div>
-          <!-- # Portfolio Item End # -->
-          <!-- Portfolio Item -->
+
+
           <div class="item portfolio-item">
-            <a href="index.html#Portfolio_Detail" class="modal-trigger">
+            <a href="#Portfolio_Detail" class="modal-trigger">
               <h6 class="portfolio-name">LVC // Branding</h6>
               <img src="images/Portfolio/Portfolio_3.png" class="responsive-img" alt="LVC // Branding">
               <span class="portfolio-categories">Category,
@@ -434,10 +371,10 @@
               </span>
             </a>
           </div>
-          <!-- # Portfolio Item End # -->
-          <!-- Portfolio Item -->
+
+
           <div class="item portfolio-item">
-            <a href="index.html#Portfolio_Detail" class="modal-trigger">
+            <a href="#Portfolio_Detail" class="modal-trigger">
               <h6 class="portfolio-name">French Cooking</h6>
               <img src="images/Portfolio/Portfolio_1.png" class="responsive-img" alt="French Cooking">
               <span class="portfolio-categories">Category,
@@ -445,10 +382,10 @@
               </span>
             </a>
           </div>
-          <!-- # Portfolio Item End # -->
-          <!-- Portfolio Item -->
+
+
           <div class="item portfolio-item">
-            <a href="index.html#Portfolio_Detail" class="modal-trigger">
+            <a href="#Portfolio_Detail" class="modal-trigger">
               <h6 class="portfolio-name">Verso – Digital Magazine</h6>
               <img src="images/Portfolio/Portfolio_2.png" class="responsive-img" alt="Verso – Digital Magazine">
               <span class="portfolio-categories">Category,
@@ -456,10 +393,10 @@
               </span>
             </a>
           </div>
-          <!-- # Portfolio Item End # -->
-          <!-- Portfolio Item -->
+
+
           <div class="item portfolio-item">
-            <a href="index.html#Portfolio_Detail" class="modal-trigger">
+            <a href="#Portfolio_Detail" class="modal-trigger">
               <h6 class="portfolio-name">LVC // Branding</h6>
               <img src="images/Portfolio/Portfolio_3.png" class="responsive-img" alt="LVC // Branding">
               <span class="portfolio-categories">Category,
@@ -471,152 +408,9 @@
         </div>
       </section>
       <!-- # Portfolio End # -->
-      <!-- Pricing Table -->
-      <section id="price" class="section scrollspy">
-        <!-- Icon -->
-        <span class="icon btn-floating btn-large cyan darken-4"><i class="material-icons">format_list_bulleted</i></span>
-        <!-- # Icon End # -->
-        <!-- Title -->
-        <h2 class="cyan-text text-darken-4">Pricing Table</h2>
-        <!-- # Title End # -->
-        <div class="row">
-          <!-- Pricing Table Item -->
-          <div class="col s12 m4 l4">
-            <div class="pricing-table">
-              <!-- Header -->
-              <div class="header">
-                <h6 class="title">Silver Graphic Packed</h6>
-                <p>Packed Details</p>
-              </div>
-              <!-- # Header End # -->
-              <!-- Price -->
-              <div class="price">
-                <div class="chip cyan darken-4 white-text">$29 / mo</div>
-              </div>
-              <!-- # Price End # -->
-              <!-- Features -->
-              <ul>
-                <li>1 GB space</li>
-                <li>Unlimited Bandwidth</li>
-                <li>200 Portfolio Items</li>
-                <li>20 Video Uploads</li>
-                <li>Premium Email Support</li>
-                <li>Premium Phone Support</li>
-                <li>4 Revizasisyon Design</li>
-                <li>24/7 Support</li>
-              </ul>
-              <!-- # Features End # -->
-              <a href="javascript:void(0)" class="btn btn-flat waves-effect btn-block">ORDER NOW</a>
-            </div>
-          </div>
-          <!-- # Pricing Table Item End # -->
-          <!-- Pricing Table Item -->
-          <div class="col s12 m4 l4">
-            <div class="pricing-table highlighted">
-              <!-- Header -->
-              <div class="header">
-                <h6 class="title">Gold Graphic Packed</h6>
-                <p>Packed Details</p>
-              </div>
-              <!-- # Header End # -->
-              <!-- Price -->
-              <div class="price">
-                <div class="chip cyan darken-4 white-text">$89 / mo</div>
-              </div>
-              <!-- # Price End # -->
-              <!-- Features -->
-              <ul>
-                <li>3 GB space</li>
-                <li>Unlimited Bandwidth</li>
-                <li>200 Portfolio Items</li>
-                <li>20 Video Uploads</li>
-                <li>Premium Email Support</li>
-                <li>Premium Phone Support</li>
-                <li>Premium Email Support</li>
-                <li>Premium Phone Support</li>
-                <li>4 Revizasisyon Design</li>
-                <li>24/7 Support</li>
-              </ul>
-              <!-- # Features End # -->
-              <a href="javascript:void(0)" class="btn btn-flat waves-effect btn-block">ORDER NOW</a>
-            </div>
-          </div>
-          <!-- # Pricing Table Item End # -->
-          <!-- Pricing Table Item -->
-          <div class="col s12 m4 l4">
-            <div class="pricing-table">
-              <!-- Header -->
-              <div class="header">
-                <h6 class="title">Platinium Graphic Packed</h6>
-                <p>Packed Details</p>
-              </div>
-              <!-- # Header End # -->
-              <!-- Price -->
-              <div class="price">
-                <div class="chip cyan darken-4 white-text">$499 / mo</div>
-              </div>
-              <!-- # Price End # -->
-              <!-- Features -->
-              <ul>
-                <li>Unlimited space</li>
-                <li>Unlimited Bandwidth</li>
-                <li>200 Portfolio Items</li>
-                <li>20 Video Uploads</li>
-                <li>Premium Email Support</li>
-                <li>Premium Phone Support</li>
-                <li>4 Revizasisyon Design</li>
-                <li>24/7 Support</li>
-              </ul>
-              <!-- # Features End # -->
-              <a href="javascript:void(0)" class="btn btn-flat waves-effect btn-block">ORDER NOW</a>
-            </div>
-          </div>
-          <!-- # Pricing Table Item End # -->
-        </div>
-      </section>
-      <!-- # Pricing Table End # -->
-      <!-- References -->
-      <section id="references" class="section scrollspy">
-        <!-- Icon -->
-        <span class="icon btn-floating btn-large deep-orange accent-3"><i class="material-icons">assignment_ind</i></span>
-        <!-- # Icon End # -->
-        <!-- Title -->
-        <h2 class="deep-orange-text text-accent-3">References</h2>
-        <!-- # Title End # -->
-        <div id="References_Carousel" class="owl-carousel">
-          <!-- Reference Item -->
-          <div class="item reference-item"> <img src="images/References/Reference_Logo_1.png" class="responsive-img grayscale" alt="METTA"> </div>
-          <!-- # Reference Item End # -->
-          <!-- Reference Item -->
-          <div class="item reference-item"> <img src="images/References/Reference_Logo_2.png" class="responsive-img grayscale" alt="FAST FORWARD"> </div>
-          <!-- # Reference Item End # -->
-          <!-- Reference Item -->
-          <div class="item reference-item"> <img src="images/References/Reference_Logo_3.png" class="responsive-img grayscale" alt="AMPGRID"> </div>
-          <!-- # Reference Item End # -->
-          <!-- Reference Item -->
-          <div class="item reference-item"> <img src="images/References/Reference_Logo_4.png" class="responsive-img grayscale" alt="SUPARCANDY"> </div>
-          <!-- # Reference Item End # -->
-          <!-- Reference Item -->
-          <div class="item reference-item"> <img src="images/References/Reference_Logo_5.png" class="responsive-img grayscale" alt="THE ENPOWERED OWL"> </div>
-          <!-- # Reference Item End # -->
-          <!-- Reference Item -->
-          <div class="item reference-item"> <img src="images/References/Reference_Logo_1.png" class="responsive-img grayscale" alt="METTA"> </div>
-          <!-- # Reference Item End # -->
-          <!-- Reference Item -->
-          <div class="item reference-item"> <img src="images/References/Reference_Logo_2.png" class="responsive-img grayscale" alt="FAST FORWARD"> </div>
-          <!-- # Reference Item End # -->
-          <!-- Reference Item -->
-          <div class="item reference-item"> <img src="images/References/Reference_Logo_3.png" class="responsive-img grayscale" alt="AMPGRID"> </div>
-          <!-- # Reference Item End # -->
-          <!-- Reference Item -->
-          <div class="item reference-item"> <img src="images/References/Reference_Logo_4.png" class="responsive-img grayscale" alt="SUPARCANDY"> </div>
-          <!-- # Reference Item End # -->
-          <!-- Reference Item -->
-          <div class="item reference-item"> <img src="images/References/Reference_Logo_5.png" class="responsive-img grayscale" alt="THE ENPOWERED OWL"> </div>
-          <!-- # Reference Item End # -->
-        </div>
-      </section>
-      <!-- # References End # -->
+
+
+
       <!-- Contact Me -->
       <section id="contact" class="section scrollspy">
         <!-- Icon -->
@@ -631,26 +425,26 @@
             <!-- Mail -->
             <div class="col s6 l3">
               <div class="icon"><i class="material-icons">email</i></div>
-              <p>hello@sitename.com</p>
+              <p>{{ .Personal.ContactMe.Email }}</p>
             </div>
             <!-- # Mail End # -->
             <!-- Mobile -->
             <div class="col s6 l3">
               <div class="icon"><i class="material-icons">phone_iphone</i></div>
-              <p>+875 235 587 98 69</p>
+              <p>{{ .Personal.ContactMe.Cellphone }}</p>
             </div>
             <!-- # Mobile End # -->
             <!-- Skype -->
             <div class="col s6 l3">
               <div class="icon"><i class="fa fa-skype"></i></div>
-              <p>Skype / HelloDaniel</p>
+              <p>Skype / {{ .Personal.ContactMe.Skype }}</p>
             </div>
             <!-- # Skype End # -->
             <!-- Location -->
             <div class="col s6 l3">
               <div class="icon"><i class="material-icons">location_on</i></div>
-              <p>121 King Street, Melbourne
-                <br> Victoria 3000 Australia</p>
+              <p> {{ .Personal.ContactMe.Address }}
+                <br> Lima 32</p>
             </div>
             <!-- # Location End # -->
             <div class="clearfix"></div>
@@ -660,13 +454,7 @@
       </section>
       <div class="section contact-form">
         <div class="row">
-          <div class="col s12 m6 l6 contact-text">Vestibulum ut pharetra diam, vitae hendrerit sapien. Praesent porttitor augue nec semper suscipi tdolor.Vestibulum ut pharetra diam, vitae hendrerit sapien. Praesent porttitor augue nec semper suscipi tdolor.
-            <br>
-            <br> Vestibulum ut pharetra diam, vitae hendrerit sapien. Praesent porttitor augue nec semper suscipi tdolor.
-            <br>
-            <br> Vestibulum ut pharetra diam, vitae hendrerit sapien. Praesent porttitor augue nec semper suscipi tdolor.Vestibulum ut pharetra diam, vitae hendrerit sapien. Praesent porttitor augue nec semper suscipi tdolor.
-            <br>
-            <br> Vestibulum ut pharetra diam, vitae hendrerit sapien. Praesent porttitor augue nec semper suscipi tdolor. </div>
+          <div class="col s12 m6 l6 contact-text"> {{ .Personal.ContactMe.Message }}</div>
           <div class="col s12 m6 l6">
             <form>
               <div class="input-field">
@@ -695,10 +483,10 @@
       <footer id="footer">
         <div class="copyright">
           <div class="row">
-            <div class="col s12 m6 l6 left light-bg">Sitename.com
-              <br> 2015 - Copyright</div>
+            <div class="col s12 m6 l6 left light-bg">{{ .Personal.NickName }}
+              <br> 2016 - Copyright</div>
             <div class="col s12 m6 l6 right dark-bg">Contact Me!
-              <br> hello@sitename.com
+              <br> {{ .Personal.ContactMe.Email }}
             </div>
           </div>
         </div>
@@ -724,6 +512,8 @@
     </div>
   </div>
   <!-- # Loader End -->
+
+
   <!-- Portfolio Detail Modal -->
   <div id="Portfolio_Detail" class="modal">
     <div class="modal-content">
@@ -734,11 +524,14 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisinuli.</p>
     </div>
     <div class="modal-footer">
-      <a href="index.html#!" class="waves-effect btn-flat left light-green-text text-darken-3">MORE INFO</a>
-      <a href="index.html#!" class="waves-effect btn-flat right light-green-text text-darken-3">WEB SITE PAGES</a>
+      <a href="#!" class="waves-effect btn-flat left light-green-text text-darken-3">MORE INFO</a>
+      <a href="#!" class="waves-effect btn-flat right light-green-text text-darken-3">WEB SITE PAGES</a>
     </div>
   </div>
   <!-- # Portfolio Detail Modal End # -->
+
+
+
   <!-- jQuery-->
   <script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
   <!-- materialize -->
@@ -754,36 +547,7 @@
   <script type="text/javascript" src="assets/js/modernizr.js"></script>
   <!-- scripts init -->
   <script type="text/javascript" src="assets/js/scripts.js"></script>
-  <!-- !!! ONLY FOR DEMO !!! -->
-  <script type="text/javascript" src="assets/js/jquery.tabSlideOut.v1.3.js"></script>
-  <script type="text/javascript" src="assets/js/demo.js"></script>
-  <div class="slide-out-div">
-    <a class="handle" href="javascript:void(0)"></a><strong>Layouts</strong>
-    <a class="demo-video-play" href="index_video.html" title="Revolution Slider"><i class="material-icons">burst_mode</i></a>
-    <a class="demo-video-play" href="index_image.html" title="Image Banner"><i class="material-icons">image</i></a>
-    <a class="demo-video-play" href="index_video.html" title="Parallax Video"><i class="material-icons">play_circle_filled</i></a>
-    <strong>Colors</strong>
-    <a class="style-box-patterns color1" href="javascript:void(0)" data-theme="assets/themes/color1/color-style/color.css"></a>
-    <a class="style-box-patterns color2" href="javascript:void(0)" data-theme="assets/themes/color2/color-style/color.css"></a>
-    <a class="style-box-patterns color3" href="javascript:void(0)" data-theme="assets/themes/color3/color-style/color.css"></a>
-    <a class="style-box-patterns color4" href="javascript:void(0)" data-theme="assets/themes/color4/color-style/color.css"></a>
-    <a class="style-box-patterns color5" href="javascript:void(0)" data-theme="assets/themes/color5/color-style/color.css"></a>
-    <a class="style-box-patterns color6" href="javascript:void(0)" data-theme="assets/themes/color6/color-style/color.css"></a>
-    <a class="style-box-patterns color7" href="javascript:void(0)" data-theme="assets/themes/color7/color-style/color.css"></a>
-    <a class="style-box-patterns color8" href="javascript:void(0)" data-theme="assets/themes/color8/color-style/color.css"></a>
-    <a class="style-box-patterns color9" href="javascript:void(0)" data-theme="assets/themes/color9/color-style/color.css"></a>
-    <a class="style-box-patterns color10" href="javascript:void(0)" data-theme="assets/themes/color10/color-style/color.css"></a>
-    <a class="style-box-patterns color11" href="javascript:void(0)" data-theme="assets/themes/color11/color-style/color.css"></a>
-    <a class="style-box-patterns color12" href="javascript:void(0)" data-theme="assets/themes/color12/color-style/color.css"></a>
-    <a class="style-box-patterns color13" href="javascript:void(0)" data-theme="assets/themes/color13/color-style/color.css"></a>
-    <a class="style-box-patterns color14" href="javascript:void(0)" data-theme="assets/themes/color14/color-style/color.css"></a>
-    <a class="style-box-patterns color15" href="javascript:void(0)" data-theme="assets/themes/color15/color-style/color.css"></a>
-    <a class="style-box-patterns color16" href="javascript:void(0)" data-theme="assets/themes/color16/color-style/color.css"></a>
-    <a class="style-box-patterns color17" href="javascript:void(0)" data-theme="assets/themes/color17/color-style/color.css"></a>
-    <a class="style-box-patterns color18" href="javascript:void(0)" data-theme="assets/themes/color18/color-style/color.css"></a>
-    <a class="style-box-patterns color19" href="javascript:void(0)" data-theme="assets/themes/color19/color-style/color.css"></a>
-  </div>
-  <!-- !!! ONLY FOR DEMO !!! -->
+
 </body>
 
 </html>
