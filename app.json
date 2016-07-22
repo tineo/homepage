@@ -1,0 +1,14 @@
+{
+  "name": "homepage",
+  "description": "This repository contains my homepage and resume. This is developed using Go and PostgreSQL",
+  "keywords": [
+    "resume",
+    "go",
+    "Perú",
+    "tineo"
+  ],
+  "image": "heroku/go:1.6",
+  "mount_dir": "src/github.com/tineo/homepage",
+  "website": "http://github.com/tineo/homepage",
+  "repository": "http://github.com/tineo/homepage"
+}
